@@ -1,5 +1,8 @@
 <script setup>
+import {useCartStore} from "@/stores/cart.js";
 import { formatCurrency } from "@/helpers/index.js";
+
+const cart = useCartStore()
 
 defineProps({
   product: {
@@ -27,6 +30,7 @@ defineProps({
     <button
         type="button"
         class="absolute top-5 -right-4"
+        @click="cart.addItem(product)"
     >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
            class="w-8 h-8 bg-indigo-600 rounded-full text-white hover:bg-green-600">
