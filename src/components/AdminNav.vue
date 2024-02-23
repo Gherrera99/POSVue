@@ -5,12 +5,12 @@ import Logo from "@/components/Logo.vue";
 </script>
 
 <template>
-  <header class="px-10 py-5 bg-gray-700 flex justify-between absolute top-0 w-full z-10">
+  <header class="px-10 py-5 bg-gray-700 flex flex-col lg:flex-row justify-between absolute top-0 w-full z-10">
     <div>
       <logo/>
     </div>
 
-    <nav>
+    <nav class="flex lg:flex-row">
       <RouterLink
           :to="{name: 'products'}"
           class="rounded text-white font-bold p-2"
