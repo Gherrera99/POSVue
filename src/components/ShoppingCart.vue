@@ -1,8 +1,9 @@
 <script setup>
 import ShoppingCartItem from "@/components/ShoppingCartItem.vue";
 import Amount from "@/components/Amount.vue";
-import { useCartStore } from "@/stores/cart.js";
-import { formatCurrency } from "@/helpers/index.js";
+import {useCartStore} from "@/stores/cart.js";
+import {formatCurrency} from "@/helpers/index.js";
+import {ca} from "@formkit/i18n";
 
 const cart = useCartStore()
 </script>
@@ -27,17 +28,17 @@ const cart = useCartStore()
     <dl class="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-500">
       <Amount>
         <template #label>Subtotal:</template>
-        {{formatCurrency(300)}}
+        {{ formatCurrency(cart.subtotal) }}
       </Amount>
 
       <Amount>
         <template #label>Impuestos:</template>
-        {{formatCurrency(0)}}
+        {{ formatCurrency(cart.taxes) }}
       </Amount>
 
       <Amount>
         <template #label>Total a Pagar:</template>
-        {{formatCurrency(0)}}
+        {{ formatCurrency(cart.totalPorPagar) }}
       </Amount>
     </dl>
   </div>
