@@ -1,11 +1,14 @@
 <script setup>
 import ShoppingCartItem from "@/components/ShoppingCartItem.vue";
 import Amount from "@/components/Amount.vue";
-import {useCartStore} from "@/stores/cart.js";
-import {formatCurrency} from "@/helpers/index.js";
-import {ca} from "@formkit/i18n";
+import CouponForm from "@/components/CouponForm.vue";
+import { useCartStore } from "@/stores/cart.js";
+import { useCouponStore } from "@/stores/coupons.js";
+import { formatCurrency } from "@/helpers/index.js";
+
 
 const cart = useCartStore()
+const coupon = useCouponStore()
 </script>
 
 <template>
@@ -36,11 +39,18 @@ const cart = useCartStore()
         {{ formatCurrency(cart.taxes) }}
       </Amount>
 
+      <Amount v-if="coupon.isValidCoupon">
+        <template #label>Descuento:</template>
+        {{ formatCurrency(coupon.discount) }}
+      </Amount>
+
       <Amount>
         <template #label>Total a Pagar:</template>
         {{ formatCurrency(cart.totalPorPagar) }}
       </Amount>
     </dl>
+
+    <CouponForm />
   </div>
 </template>
 
