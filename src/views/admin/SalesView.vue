@@ -12,7 +12,6 @@ const formatter = ref({
   month: 'MMMM'
 })
 
-console.log(sales.salesCollection);
 </script>
 
 <template>

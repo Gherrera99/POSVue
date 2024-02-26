@@ -4,11 +4,13 @@ import Amount from "@/components/Amount.vue";
 import CouponForm from "@/components/CouponForm.vue";
 import { useCartStore } from "@/stores/cart.js";
 import { useCouponStore } from "@/stores/coupons.js";
+import { useAuthStore } from "@/stores/auth.js";
 import { formatCurrency } from "@/helpers/index.js";
 
 
 const cart = useCartStore()
 const coupon = useCouponStore()
+const auth = useAuthStore()
 </script>
 
 <template>
@@ -55,7 +57,17 @@ const coupon = useCouponStore()
     <button
         type="button"
         class="mt-10 w-full bg-indigo-600 hover:bg-indigo-700 text-white uppercase font-bold p-3"
+        disabled
+        v-if="!auth.isAuth"
+    >
+      Inicia Sesión para confirmar tu compra
+    </button>
+
+    <button
+        type="button"
+        class="mt-10 w-full bg-indigo-600 hover:bg-indigo-700 text-white uppercase font-bold p-3"
         @click="cart.checkout()"
+        v-if="auth.isAuth"
     >
       Confirmar Compra
     </button>

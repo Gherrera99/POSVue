@@ -1,5 +1,5 @@
 <script setup>
-import {RouterLink} from "vue-router";
+import { RouterLink } from "vue-router";
 import Link from "@/components/Link.vue";
 import Logo from "@/components/Logo.vue";
 </script>

@@ -1,9 +1,13 @@
 <script setup>
-import {useProductsStore} from "@/stores/products.js";
+import { useProductsStore } from "@/stores/products.js";
+import { useAuthStore } from "@/stores/auth.js";
 import Link from "@/components/Link.vue";
 import Logo from "@/components/Logo.vue";
+import {RouterLink} from "vue-router";
+
 
 const products = useProductsStore()
+const auth = useAuthStore()
 </script>
 
 <template>
@@ -36,11 +40,44 @@ const products = useProductsStore()
     </div>
 
     <nav>
-      <Link
-          to="sales"
-      >
-        Administrar
-      </Link>
+      <div v-if="auth.isAdminUser">
+        <Link
+            to="sales"
+        >
+          Administrar
+        </Link>
+
+        <RouterLink
+            :to="{name: 'shop'}"
+            class="rounded text-white font-bold p-2"
+            @click="auth.logout()"
+        >
+          Cerrar Sesión
+        </RouterLink>
+      </div>
+
+      <div v-else-if="auth.isAuth">
+        <Link
+            to="shop"
+            @click="auth.logout()"
+        >
+          Cerrar Sesión
+        </Link>
+      </div>
+
+      <div v-else>
+        <Link
+            to="login"
+        >
+          Iniciar Sesión
+        </Link>
+
+        <Link
+            to="signup"
+        >
+          Regístrate
+        </Link>
+      </div>
     </nav>
   </header>
 </template>

@@ -14,6 +14,7 @@
     "firebase": "^10.8.0",
     "pinia": "^2.1.7",
     "uid": "^2.0.2",
+    "vee-validate": "^4.12.5",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5",
     "vue-tailwind-datepicker": "^1.7.1",
