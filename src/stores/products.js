@@ -15,6 +15,7 @@ export const useProductsStore = defineStore('products', () => {
         {id: 1, name: 'Sudaderas'},
         {id: 2, name: 'Tenis'},
         {id: 3, name: 'Lentes'},
+        {id: 4, name: 'Promocionales'},
     ]
 
     const q = query(
